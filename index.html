@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Untuk LiuL 💙</title>
 
+<link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-
-<div id="particles"></div>
 
 <div class="container">
 
@@ -22,18 +20,25 @@
 
 <div id="clock"></div>
 
+<button id="openLetter">
+💌 Buka Surat Untuk LiuL
+</button>
+
+<div id="letterBox">
+<h2>Untuk LiuL 💙</h2>
+<p id="letter"></p>
+</div>
+
 <div class="slideshow">
 
 <img id="slideImage"
-src="https://picsum.photos/id/1015/1200/700">
+src="images/foto1.jpg">
 
 <div id="caption">
-Terus melangkah walau pelan 💙
+💙 Kamu lebih kuat dari yang kamu kira
 </div>
 
 </div>
-
-<div id="letter"></div>
 
 <div class="buttons">
 
@@ -49,30 +54,40 @@ Terus melangkah walau pelan 💙
 ✨ Semangat Lagi
 </button>
 
-<button onclick="fireworks()">
-🎆 Kembang Api
-</button>
-
 </div>
 
 <h2>🎵 Playlist Semangat</h2>
 
-<audio controls loop>
-<source
-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+<select id="playlist">
+
+<option value="music/lagu1.mp3">
+Lagu 1
+</option>
+
+<option value="music/lagu2.mp3">
+Lagu 2
+</option>
+
+<option value="music/lagu3.mp3">
+Lagu 3
+</option>
+
+</select>
+
+<audio
+id="player"
+controls>
 </audio>
 
 <div class="chatbot">
 
-<h2>
-🤖 Chatbot Penyemangat LiuL
-</h2>
+<h2>🤖 Chatbot LiuL</h2>
 
 <div id="chatLog"></div>
 
 <input
 id="chatInput"
-placeholder="Ceritakan perasaanmu...">
+placeholder="Tulis sesuatu...">
 
 <button onclick="sendMessage()">
 Kirim
