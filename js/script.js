@@ -5,6 +5,7 @@ const images = [
 "images/foto3.jpg",
 "images/foto4.jpg",
 "images/foto5.jpg"
+"images/foto6.jpg"
 
 ];
 
@@ -19,6 +20,8 @@ const captions = [
 "🌻 Tetaplah menjadi dirimu yang ceria.",
 
 "🤍 Masih banyak kebahagiaan yang menunggumu."
+  
+"Semoga hari secerah langit setelah badai dan berwarna seperti pelangi."
 
 ];
 
