@@ -1,3 +1,47 @@
+const images = [
+
+"images/foto1.jpg",
+"images/foto2.jpg",
+"images/foto3.jpg",
+"images/foto4.jpg",
+"images/foto5.jpg"
+
+];
+
+const captions = [
+
+"💙 Kamu lebih kuat dari yang kamu kira.",
+
+"🌷 Senyum kecilmu adalah bukti bahwa kamu selalu mampu bangkit.",
+
+"✨ Akan selalu ada orang yang peduli padamu.",
+
+"🌻 Tetaplah menjadi dirimu yang ceria.",
+
+"🤍 Masih banyak kebahagiaan yang menunggumu."
+
+];
+
+let slide = 0;
+
+setInterval(() => {
+
+slide++;
+
+if(slide >= images.length){
+
+slide = 0;
+
+}
+
+document.getElementById("slideImage").src =
+images[slide];
+
+document.getElementById("caption").innerHTML =
+captions[slide];
+
+},5000);
+
 const letter = `
 
 Hai LiuL...
@@ -7,24 +51,11 @@ istirahatlah sejenak.
 
 Namun jangan menyerah.
 
-Kamu sudah melewati banyak hal
-yang dulu terasa mustahil.
+Karena kamu jauh lebih kuat
+daripada yang kamu kira.
 
-Setiap air mata,
-setiap lelah,
-dan setiap perjuanganmu...
+💙 Tetap semangat.
 
-sedang membentuk versi terbaik
-dari dirimu.
-
-💙 Kamu lebih kuat dari yang kamu kira.
-
-💙 Setiap langkah kecil tetap berarti.
-
-💙 Masa depan masih menyimpan
-banyak kebahagiaan untukmu.
-
-Tetap semangat LiuL.
 `;
 
 let index = 0;
@@ -44,7 +75,17 @@ setTimeout(typeWriter,25);
 
 }
 
+document
+.getElementById("openLetter")
+.onclick = ()=>{
+
+document
+.getElementById("letterBox")
+.style.display="block";
+
 typeWriter();
+
+};
 
 setInterval(()=>{
 
@@ -54,61 +95,21 @@ new Date().toLocaleString("id-ID");
 
 },1000);
 
-for(let i=0;i<120;i++){
+const player =
+document.getElementById("player");
 
-let star=document.createElement("div");
+document
+.getElementById("playlist")
+.onchange = ()=>{
 
-star.className="star";
+player.src =
+document
+.getElementById("playlist")
+.value;
 
-let size=Math.random()*3+1;
+player.play();
 
-star.style.width=size+"px";
-
-star.style.height=size+"px";
-
-star.style.left=
-Math.random()*100+"%";
-
-star.style.animationDuration=
-(Math.random()*8+5)+"s";
-
-document.body.appendChild(star);
-
-}
-
-const images=[
-
-"https://picsum.photos/id/1015/1200/700",
-
-"https://picsum.photos/id/1016/1200/700",
-
-"https://picsum.photos/id/1020/1200/700"
-
-];
-
-const captions=[
-
-"Terus melangkah walau pelan 💙",
-
-"Kamu lebih kuat dari yang kamu kira 💙",
-
-"Besok membawa harapan baru 💙"
-
-];
-
-let slide=0;
-
-setInterval(()=>{
-
-slide=(slide+1)%images.length;
-
-document.getElementById("slideImage")
-.src=images[slide];
-
-document.getElementById("caption")
-.innerHTML=captions[slide];
-
-},5000);
+};
 
 function showPopup(text){
 
@@ -130,7 +131,7 @@ document.getElementById("popup")
 function secretMessage(){
 
 showPopup(
-"Seseorang percaya bahwa kamu mampu melewati semuanya. 💙"
+"💙 Jangan menyerah. Aku percaya kamu bisa melewati semuanya."
 );
 
 }
@@ -147,13 +148,13 @@ function motivate(){
 
 const quotes=[
 
-"💙 Jangan menyerah hari ini.",
+"💙 Kamu kuat.",
 
-"💙 Kamu luar biasa.",
+"🌈 Hari yang sulit akan berlalu.",
 
-"💙 Tetap bertahan.",
+"✨ Tetap melangkah walau pelan.",
 
-"💙 Kamu pasti bisa."
+"💙 Kamu hebat."
 
 ];
 
@@ -167,54 +168,42 @@ Math.random()*quotes.length
 
 }
 
-function fireworks(){
+const botReplies=[
 
-for(let i=0;i<50;i++){
+"💙 Kamu hebat.",
 
-let dot=document.createElement("div");
+"🌷 Jangan menyerah.",
 
-dot.style.position="fixed";
+"✨ Aku percaya padamu.",
 
-dot.style.width="8px";
+"💙 Tetap semangat."
 
-dot.style.height="8px";
-
-dot.style.background="#00cfff";
-
-dot.style.left=
-Math.random()*100+"vw";
-
-dot.style.top=
-Math.random()*100+"vh";
-
-document.body.appendChild(dot);
-
-setTimeout(()=>{
-dot.remove();
-},1000);
-
-}
-
-}
+];
 
 function sendMessage(){
 
-const input=
+const input =
 document.getElementById("chatInput");
 
-const chat=
+const log =
 document.getElementById("chatLog");
 
 if(input.value==="") return;
 
-chat.innerHTML+=`
-<p>👤 ${input.value}</p>
-<p>🤖 LiuL, kamu lebih kuat dari yang kamu kira. Tetap semangat ya 💙</p>
-`;
+log.innerHTML +=
+
+"<p>👤 "+
+input.value+
+"</p>" +
+
+"<p>🤖 "+
+botReplies[
+Math.floor(
+Math.random()*botReplies.length
+)
+]+
+"</p>";
 
 input.value="";
-
-chat.scrollTop=
-chat.scrollHeight;
 
 }
