@@ -412,6 +412,383 @@ chat.scrollTop=chat.scrollHeight;
 
 </body>
 </html>
+.glass{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
+padding:25px;
+border-radius:25px;
+box-shadow:0 0 25px rgba(0,200,255,.5);
+}
+
+h1{
+text-align:center;
+margin-bottom:15px;
+}
+
+#clock{
+text-align:center;
+margin-bottom:20px;
+font-size:18px;
+}
+
+.slideshow{
+position:relative;
+}
+
+.slideshow img{
+width:100%;
+height:400px;
+object-fit:cover;
+border-radius:20px;
+}
+
+#caption{
+position:absolute;
+bottom:15px;
+left:15px;
+right:15px;
+background:rgba(0,0,0,.5);
+padding:15px;
+border-radius:15px;
+text-align:center;
+}
+
+#letter{
+margin-top:20px;
+line-height:1.9;
+white-space:pre-wrap;
+min-height:200px;
+}
+
+.buttons{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:10px;
+margin-top:20px;
+}
+
+button{
+padding:12px 18px;
+border:none;
+border-radius:999px;
+background:#00cfff;
+color:white;
+cursor:pointer;
+}
+
+#popup{
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:#001a33;
+padding:25px;
+border-radius:20px;
+width:90%;
+max-width:500px;
+z-index:9999;
+}
+
+#popup button{
+margin-top:15px;
+width:100%;
+}
+
+audio{
+width:100%;
+margin-top:20px;
+}
+
+select{
+width:100%;
+padding:10px;
+margin-top:10px;
+margin-bottom:10px;
+border-radius:10px;
+}
+
+.chat{
+margin-top:25px;
+}
+
+#chatLog{
+height:180px;
+overflow:auto;
+background:rgba(0,0,0,.2);
+padding:10px;
+border-radius:15px;
+margin-bottom:10px;
+}
+
+input{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+.star{
+position:fixed;
+background:white;
+border-radius:50%;
+opacity:.7;
+animation:rise 10s linear infinite;
+}
+
+@keyframes rise{
+from{transform:translateY(100vh);}
+to{transform:translateY(-100px);}
+}
+
+@media(max-width:768px){
+.slideshow img{
+height:250px;
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="glass">
+
+<h1>💙 Untuk LiuL 💙</h1>
+
+<div id="clock"></div>
+
+<div class="slideshow">
+
+<img id="slideImage" src="images/foto1.jpg">
+
+<div id="caption">
+💙 Kamu lebih kuat dari yang kamu kira
+</div>
+
+</div>
+
+<div id="letter"></div>
+
+<div class="buttons">
+
+<button onclick="secretMessage()">💌 Pesan Rahasia</button>
+
+<button onclick="virtualHug()">🤗 Peluk Virtual</button>
+
+<button onclick="motivate()">✨ Motivasi</button>
+
+</div>
+
+<h2 style="margin-top:20px;">🎵 Playlist Semangat</h2>
+
+<select id="playlist">
+<option value="music/lagu1.mp3">Lagu 1</option>
+<option value="music/lagu2.mp3">Lagu 2</option>
+<option value="music/lagu3.mp3">Lagu 3</option>
+</select>
+
+<audio id="player" controls></audio>
+
+<div class="chat">
+
+<h2>🤖 Chatbot Penyemangat LiuL</h2>
+
+<div id="chatLog"></div>
+
+<input id="chatInput" placeholder="Tulis sesuatu...">
+
+<button onclick="sendMessage()">Kirim</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="popup">
+
+<div id="popupText"></div>
+
+<button onclick="closePopup()">Tutup</button>
+
+</div>
+
+<script>
+
+const images=[
+"images/foto1.jpg",
+"images/foto2.jpg",
+"images/foto3.jpg",
+"images/foto4.jpg",
+"images/foto5.jpg"
+];
+
+const captions=[
+"💙 Kamu lebih kuat dari yang kamu kira.",
+"🌷 Senyummu lebih berarti dari yang kamu sadari.",
+"✨ Kamu tidak sendirian menghadapi semuanya.",
+"🌻 Tetaplah menjadi dirimu yang luar biasa.",
+"🤍 Banyak kebahagiaan menunggumu di depan."
+];
+
+let slide=0;
+
+setInterval(()=>{
+
+slide=(slide+1)%images.length;
+
+document.getElementById("slideImage").src=images[slide];
+
+document.getElementById("caption").innerHTML=captions[slide];
+
+},5000);
+
+const text=`
+
+Hai LiuL...
+
+Kalau hari ini terasa berat,
+istirahatlah sejenak.
+
+Tapi jangan menyerah.
+
+Kamu sudah sampai sejauh ini.
+
+💙 Aku percaya padamu.
+💙 Kamu hebat.
+💙 Kamu kuat.
+
+`;
+
+let i=0;
+
+function typeWriter(){
+
+if(i<text.length){
+
+document.getElementById("letter").innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(typeWriter,25);
+
+}
+
+}
+
+typeWriter();
+
+setInterval(()=>{
+
+document.getElementById("clock").innerHTML=
+new Date().toLocaleString("id-ID");
+
+},1000);
+
+for(let i=0;i<100;i++){
+
+let star=document.createElement("div");
+
+star.className="star";
+
+let size=Math.random()*3+1;
+
+star.style.width=size+"px";
+star.style.height=size+"px";
+
+star.style.left=Math.random()*100+"%";
+
+star.style.animationDuration=
+(Math.random()*8+5)+"s";
+
+document.body.appendChild(star);
+
+}
+
+document.getElementById("playlist").onchange=()=>{
+
+let player=document.getElementById("player");
+
+player.src=
+document.getElementById("playlist").value;
+
+player.play();
+
+};
+
+function showPopup(text){
+
+document.getElementById("popup").style.display="block";
+
+document.getElementById("popupText").innerHTML=text;
+
+}
+
+function closePopup(){
+
+document.getElementById("popup").style.display="none";
+
+}
+
+function secretMessage(){
+
+showPopup("💙 Jangan menyerah. Aku percaya kamu bisa melewati semuanya.");
+
+}
+
+function virtualHug(){
+
+showPopup("⊂(･ω･*⊂) Peluk virtual untuk LiuL 💙");
+
+}
+
+function motivate(){
+
+const quotes=[
+
+"💙 Kamu kuat.",
+
+"🌈 Hari yang sulit akan berlalu.",
+
+"✨ Tetap melangkah walau pelan.",
+
+"💙 Aku bangga padamu."
+
+];
+
+showPopup(quotes[Math.floor(Math.random()*quotes.length)]);
+
+}
+
+function sendMessage(){
+
+const input=document.getElementById("chatInput");
+
+const chat=document.getElementById("chatLog");
+
+if(input.value==="") return;
+
+chat.innerHTML+=`
+<p>👤 ${input.value}</p>
+<p>🤖 LiuL, kamu hebat dan pasti bisa melewati semuanya 💙</p>
+`;
+
+input.value="";
+
+chat.scrollTop=chat.scrollHeight;
+
+}
+
+</script>
+
+</body>
+</html>
 <div id="caption">
 💙 Kamu lebih kuat dari yang kamu kira
 </div>
