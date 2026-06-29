@@ -1,414 +1,461 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>💙 Untuk LiuL 💙</title>
 
-<style>
+<link rel="stylesheet" href="style.css">
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-}
+<link rel="manifest" href="manifest.json">
 
-body{
-background:linear-gradient(-45deg,#00112b,#003399,#0066ff,#00cfff);
-background-size:400% 400%;
-animation:bg 15s ease infinite;
-color:white;
-overflow-x:hidden;
-}
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
-@keyframes bg{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-.container{
-max-width:1000px;
-margin:auto;
-padding:20px;
-}
-
-.glass{
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(15px);
-padding:25px;
-border-radius:25px;
-box-shadow:0 0 25px rgba(0,200,255,.5);
-}
-
-h1{
-text-align:center;
-margin-bottom:15px;
-}
-
-#clock{
-text-align:center;
-margin-bottom:20px;
-font-size:18px;
-}
-
-.slideshow{
-position:relative;
-}
-
-.slideshow img{
-width:100%;
-height:400px;
-object-fit:cover;
-border-radius:20px;
-}
-
-#caption{
-position:absolute;
-bottom:15px;
-left:15px;
-right:15px;
-background:rgba(0,0,0,.5);
-padding:15px;
-border-radius:15px;
-text-align:center;
-}
-
-#letter{
-margin-top:20px;
-line-height:1.9;
-white-space:pre-wrap;
-min-height:200px;
-}
-
-.buttons{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:10px;
-margin-top:20px;
-}
-
-button{
-padding:12px 18px;
-border:none;
-border-radius:999px;
-background:#00cfff;
-color:white;
-cursor:pointer;
-}
-
-#popup{
-display:none;
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:#001a33;
-padding:25px;
-border-radius:20px;
-width:90%;
-max-width:500px;
-z-index:9999;
-}
-
-#popup button{
-margin-top:15px;
-width:100%;
-}
-
-audio{
-width:100%;
-margin-top:20px;
-}
-
-select{
-width:100%;
-padding:10px;
-margin-top:10px;
-margin-bottom:10px;
-border-radius:10px;
-}
-
-.chat{
-margin-top:25px;
-}
-
-#chatLog{
-height:180px;
-overflow:auto;
-background:rgba(0,0,0,.2);
-padding:10px;
-border-radius:15px;
-margin-bottom:10px;
-}
-
-input{
-width:100%;
-padding:12px;
-border:none;
-border-radius:10px;
-margin-bottom:10px;
-}
-
-.star{
-position:fixed;
-background:white;
-border-radius:50%;
-opacity:.7;
-animation:rise 10s linear infinite;
-}
-
-@keyframes rise{
-from{transform:translateY(100vh);}
-to{transform:translateY(-100px);}
-}
-
-@media(max-width:768px){
-.slideshow img{
-height:250px;
-}
-}
-
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-<div class="container">
+<!-- ========================= -->
+<!-- Loading Screen -->
+<!-- ========================= -->
+
+<div id="loadingScreen">
+
+<div class="loader">
+
+<div class="moon"></div>
+
+<div class="sunflower-loader">🌻</div>
+
+<h1>Untuk LiuL</h1>
+
+<p>Menyiapkan kejutan spesial...</p>
+
+<div class="loadingBar">
+
+<div class="loadingProgress"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================= -->
+<!-- Background -->
+<!-- ========================= -->
+
+<div id="background">
+
+<div id="stars"></div>
+
+<div id="meteors"></div>
+
+<div id="fireflies"></div>
+
+<div id="sunflowers"></div>
+
+<div id="fog"></div>
+
+</div>
+
+<!-- ========================= -->
+<!-- Welcome -->
+<!-- ========================= -->
+
+<section id="welcome">
 
 <div class="glass">
 
-<h1>💙 Untuk LiuL 💙</h1>
+<h1>
 
-<div id="clock"></div>
+🌻 Selamat Datang LiuL 💙
+
+</h1>
+
+<p id="typingWelcome"></p>
+
+<form id="loginForm">
+
+<label>
+
+📅 Tanggal Lahir
+
+</label>
+
+<input
+
+type="date"
+
+id="birthday"
+
+required
+
+>
+
+<label>
+
+😊 Bagaimana suasana hatimu hari ini?
+
+</label>
+
+<select id="mood">
+
+<option value="">Pilih suasana hati</option>
+
+<option value="happy">😊 Bahagia</option>
+
+<option value="normal">🙂 Biasa saja</option>
+
+<option value="sad">😔 Sedih</option>
+
+<option value="verySad">🥺 Sangat Sedih</option>
+
+</select>
+
+<button
+
+type="submit"
+
+id="enterBtn">
+
+Masuk 💙
+
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- Halaman Sedih -->
+<!-- ========================= -->
+
+<section
+
+id="sadPage"
+
+class="hidden">
+
+<div class="glass">
+
+<h1>
+
+🤍 Untuk LiuL
+
+</h1>
+
+<p id="sadTyping"></p>
+
+<button id="continueBtn">
+
+🌻 Aku Akan Bertahan
+
+</button>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- Main Website -->
+<!-- ========================= -->
+
+<section
+
+id="mainPage"
+
+class="hidden">
+
+<header>
+
+<h1>
+
+💙 Untuk LiuL 💙
+
+</h1>
+
+<p>
+
+Website ini dibuat khusus untukmu.
+
+</p>
+
+<div id="clock">
+
+00:00
+
+</div>
+
+</header>
+
+<!-- Slideshow -->
+
+<div class="glass">
+
+<h2>
+
+📸 Kenangan Indah
+
+</h2>
 
 <div class="slideshow">
 
-<img id="slideImage" src="images/foto1.jpg">
+<img
+
+id="slideImage"
+
+src="images/foto1.jpg"
+
+alt="Foto LiuL"
+
+>
 
 <div id="caption">
-💙 Kamu lebih kuat dari yang kamu kira
+
+💙 Kamu lebih kuat dari yang kamu kira.
+
+</div>
+
 </div>
 
 </div>
 
-<div id="letter"></div>
+<!-- Surat -->
 
-<div class="buttons">
+<div class="glass">
 
-<button onclick="secretMessage()">💌 Pesan Rahasia</button>
+<h2>
 
-<button onclick="virtualHug()">🤗 Peluk Virtual</button>
+💌 Surat Untuk LiuL
 
-<button onclick="motivate()">✨ Motivasi</button>
+</h2>
+
+<div id="letterBox">
+
+<p id="typingLetter"></p>
 
 </div>
 
-<h2 style="margin-top:20px;">🎵 Playlist Semangat</h2>
+<button id="openLetter">
+
+Buka Surat
+
+</button>
+
+</div>
+<!-- ========================= -->
+<!-- Playlist -->
+<!-- ========================= -->
+
+<div class="glass">
+
+<h2>🎵 Playlist Untuk LiuL</h2>
+
+<p>Pilih lagu favoritmu 💙</p>
 
 <select id="playlist">
-<option value="music/lagu1.mp3">Lagu 1</option>
-<option value="music/lagu2.mp3">Lagu 2</option>
-<option value="music/lagu3.mp3">Lagu 3</option>
+
+<option value="music/lagu1.mp3">
+Fall For You
+</option>
+
+<option value="music/lagu2.mp3">
+Kau Tak Sendiri
+</option>
+
+<option value="music/lagu3.mp3">
+Untuk Perempuan Yang Sedang Dalam Pelukan
+</option>
+
 </select>
 
-<audio id="player" controls></audio>
+<audio id="player" controls>
 
-<div class="chat">
+<source
+src="music/lagu1.mp3"
+type="audio/mpeg">
 
-<h2>🤖 Chatbot Penyemangat LiuL</h2>
+Browser tidak mendukung audio.
 
-<div id="chatLog"></div>
+</audio>
 
-<input id="chatInput" placeholder="Tulis sesuatu...">
+</div>
 
-<button onclick="sendMessage()">Kirim</button>
+<!-- ========================= -->
+<!-- Motivasi -->
+<!-- ========================= -->
+
+<div class="glass">
+
+<h2>🌻 Penyemangat Hari Ini</h2>
+
+<p id="motivation">
+
+Klik tombol di bawah ya 💙
+
+</p>
+
+<button id="motivationBtn">
+
+✨ Beri Semangat
+
+</button>
+
+</div>
+
+<!-- ========================= -->
+<!-- Peluk Virtual -->
+<!-- ========================= -->
+
+<div class="glass">
+
+<h2>🤗 Peluk Virtual</h2>
+
+<p>
+
+Kalau hari ini terasa berat...
+
+Aku ingin mengirim pelukan hangat untukmu.
+
+</p>
+
+<button id="hugBtn">
+
+🤍 Peluk Aku
+
+</button>
+
+</div>
+
+<!-- ========================= -->
+<!-- Pesan Rahasia -->
+<!-- ========================= -->
+
+<div class="glass">
+
+<h2>💌 Pesan Rahasia</h2>
+
+<button id="secretBtn">
+
+Buka Pesan Rahasia
+
+</button>
+
+</div>
+
+<!-- ========================= -->
+<!-- Chatbot -->
+<!-- ========================= -->
+
+<div class="glass">
+
+<h2>🤖 Chatbot Penyemangat</h2>
+
+<div id="chatBox">
+
+<div class="bot">
+
+Halo LiuL 💙
+
+Aku akan menemanimu kapan pun kamu membutuhkanku.
 
 </div>
 
 </div>
 
+<input
+
+type="text"
+
+id="chatInput"
+
+placeholder="Tulis sesuatu..."
+
+>
+
+<button id="sendChat">
+
+Kirim
+
+</button>
+
 </div>
+
+<!-- ========================= -->
+<!-- Gift -->
+<!-- ========================= -->
+
+<div class="glass">
+
+<h2>🎁 Hadiah Untukmu</h2>
+
+<button id="giftBtn">
+
+🎁 Buka Hadiah
+
+</button>
+
+</div>
+
+<!-- ========================= -->
+<!-- Popup -->
+<!-- ========================= -->
 
 <div id="popup">
 
-<div id="popupText"></div>
+<div class="popupCard">
 
-<button onclick="closePopup()">Tutup</button>
+<h2>
+
+💙 Untuk LiuL
+
+</h2>
+
+<p id="popupText">
+
+....
+
+</p>
+
+<button id="closePopup">
+
+Tutup
+
+</button>
 
 </div>
 
-<script>
+</div>
 
-const images=[
-"images/foto1.jpg",
-"images/foto2.jpg",
-"images/foto3.jpg",
-"images/foto4.jpg",
-"images/foto5.jpg"
-];
+<!-- ========================= -->
+<!-- Footer -->
+<!-- ========================= -->
 
-const captions=[
-"💙 Kamu lebih kuat dari yang kamu kira.",
-"🌷 Senyummu lebih berarti dari yang kamu sadari.",
-"✨ Kamu tidak sendirian menghadapi semuanya.",
-"🌻 Tetaplah menjadi dirimu yang luar biasa.",
-"🤍 Banyak kebahagiaan menunggumu di depan."
-];
+<footer>
 
-let slide=0;
+<p>
 
-setInterval(()=>{
+Made with 💙 khusus untuk LiuL
 
-slide=(slide+1)%images.length;
+</p>
 
-document.getElementById("slideImage").src=images[slide];
+</footer>
 
-document.getElementById("caption").innerHTML=captions[slide];
+</section>
 
-},5000);
-
-const text=`
-
-Hai LiuL...
-
-Kalau hari ini terasa berat,
-istirahatlah sejenak.
-
-Tapi jangan menyerah.
-
-Kamu sudah sampai sejauh ini.
-
-💙 Aku percaya padamu.
-💙 Kamu hebat.
-💙 Kamu kuat.
-
-`;
-
-let i=0;
-
-function typeWriter(){
-
-if(i<text.length){
-
-document.getElementById("letter").innerHTML+=text.charAt(i);
-
-i++;
-
-setTimeout(typeWriter,25);
-
-}
-
-}
-
-typeWriter();
-
-setInterval(()=>{
-
-document.getElementById("clock").innerHTML=
-new Date().toLocaleString("id-ID");
-
-},1000);
-
-for(let i=0;i<100;i++){
-
-let star=document.createElement("div");
-
-star.className="star";
-
-let size=Math.random()*3+1;
-
-star.style.width=size+"px";
-star.style.height=size+"px";
-
-star.style.left=Math.random()*100+"%";
-
-star.style.animationDuration=
-(Math.random()*8+5)+"s";
-
-document.body.appendChild(star);
-
-}
-
-document.getElementById("playlist").onchange=()=>{
-
-let player=document.getElementById("player");
-
-player.src=
-document.getElementById("playlist").value;
-
-player.play();
-
-};
-
-function showPopup(text){
-
-document.getElementById("popup").style.display="block";
-
-document.getElementById("popupText").innerHTML=text;
-
-}
-
-function closePopup(){
-
-document.getElementById("popup").style.display="none";
-
-}
-
-function secretMessage(){
-
-showPopup("💙 Jangan menyerah. Aku percaya kamu bisa melewati semuanya.");
-
-}
-
-function virtualHug(){
-
-showPopup("⊂(･ω･*⊂) Peluk virtual untuk LiuL 💙");
-
-}
-
-function motivate(){
-
-const quotes=[
-
-"💙 Kamu kuat.",
-
-"🌈 Hari yang sulit akan berlalu.",
-
-"✨ Tetap melangkah walau pelan.",
-
-"💙 Aku bangga padamu."
-
-];
-
-showPopup(quotes[Math.floor(Math.random()*quotes.length)]);
-
-}
-
-function sendMessage(){
-
-const input=document.getElementById("chatInput");
-
-const chat=document.getElementById("chatLog");
-
-if(input.value==="") return;
-
-chat.innerHTML+=`
-<p>👤 ${input.value}</p>
-<p>🤖 LiuL, kamu hebat dan pasti bisa melewati semuanya 💙</p>
-`;
-
-input.value="";
-
-chat.scrollTop=chat.scrollHeight;
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
-</html>
+
+  </html>
